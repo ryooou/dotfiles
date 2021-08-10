@@ -1,0 +1,11 @@
+# History
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_no_store
+setopt hist_reduce_blanks
+setopt hist_save_no_dups
+setopt share_history
+
+setopt inc_append_history
+
+setopt print_eight_bit
