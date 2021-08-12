@@ -7,11 +7,6 @@ DOTFILES := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
 .DEFAULT_GOAL := help
 
-# Macro definitions
-define create_symlink
-    bash ${DOTPATH}/etc/scripts/symlink.sh $1 $2 $3
-endef
-
 # Targets
 all:
 
@@ -22,13 +17,8 @@ install: ## Create symlinks to home directory
 	@echo '==> Start to deploy dotfiles to home directory.'
 	@echo ''
 	@make update-submodules
-	@$(call create_symlink, $(DOTPATH)/zsh/.zprezto, $(HOME)/.zprezto, $(BACKUP_DIR))
-	@$(foreach val, $(DOTFILES), $(call create_symlink, $(abspath $(val)), $(HOME)/$(val), $(BACKUP_DIR));)
-
-clean: ## Remove the dot files and this repo
-	@echo 'Remove dot files in your home directory...'
-	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
-	-rm -rf $(DOTPATH)
+	@bash ${DOTPATH}/etc/scripts/symlink.sh $(DOTPATH)/zsh/.zprezto $(HOME)/.zprezto $(BACKUP_DIR)
+	@$(foreach val, $(DOTFILES), bash ${DOTPATH}/etc/scripts/symlink.sh $(abspath $(val)) $(HOME)/$(val) $(BACKUP_DIR);)
 
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
