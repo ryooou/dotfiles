@@ -16,7 +16,6 @@ list: ## Show dot files in this repo
 install: ## Create symlinks to home directory
 	@echo '==> Start to deploy dotfiles to home directory.'
 	@echo ''
-	@make update-submodules
 	@bash ${DOTPATH}/etc/scripts/symlink.sh $(DOTPATH)/zsh/.zprezto $(HOME)/.zprezto $(BACKUP_DIR)
 	@$(foreach val, $(DOTFILES), bash ${DOTPATH}/etc/scripts/symlink.sh $(abspath $(val)) $(HOME)/$(val) $(BACKUP_DIR);)
 
