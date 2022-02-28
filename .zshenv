@@ -23,13 +23,21 @@ export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$PATH"
 export GO111MODULE=auto
 
+# Node
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# Python
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # History file and its size
 export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=1000000
 
 # DOTPATH
-# export DOTPATH=${$0:A:h}
+# export DOTPATH=${0:A:h}
 export DOTPATH=${HOME}/dotfiles
 
 # Typeset 'PATH'

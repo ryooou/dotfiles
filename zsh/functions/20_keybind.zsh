@@ -38,7 +38,7 @@ if (( $+commands[peco] )); then
     fi
 
     BUFFER=$(fc -l -n 1 | eval $parse_cmd | \
-               peco ${=ZSH_PECO_HISTORY_OPTS} --query "$LBUFFER")
+              peco ${=ZSH_PECO_HISTORY_OPTS} --query "$LBUFFER")
 
     CURSOR=$#BUFFER # move cursor
     zle -R -c       # refresh
@@ -46,4 +46,19 @@ if (( $+commands[peco] )); then
 
   zle -N peco_select_history
   bindkey '^R' peco_select_history
+fi
+
+# peco + ghq
+
+if (( $+commands[peco] )) && (( $+commands[ghq] )); then
+  function peco_src () {
+    local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+    if [ -n "$selected_dir" ]; then
+      BUFFER="cd ${selected_dir}"
+      zle accept-line
+    fi
+    zle clear-screen
+  }
+  zle -N peco_src
+  bindkey '^]' peco_src
 fi
