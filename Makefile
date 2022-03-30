@@ -14,10 +14,9 @@ list: ## Show dot files in this repo
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
 
 install: ## Create symlinks to home directory
-	@echo '==> Start to deploy dotfiles to home directory.'
-	@echo ''
-	@bash ${DOTPATH}/etc/scripts/symlink.sh $(DOTPATH)/zsh/.zprezto $(HOME)/.zprezto $(BACKUP_DIR)
-	@$(foreach val, $(DOTFILES), bash ${DOTPATH}/etc/scripts/symlink.sh $(abspath $(val)) $(HOME)/$(val) $(BACKUP_DIR);)
+	@bash $(DOTPATH)/etc/scripts/symlink.sh $(DOTPATH)/zsh/.zprezto $(HOME)/.zprezto $(BACKUP_DIR)
+	@$(foreach val, $(DOTFILES), bash $(DOTPATH)/etc/scripts/symlink.sh $(abspath $(val)) $(HOME)/$(val) $(BACKUP_DIR);)
+	@brew bundle --global
 
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
