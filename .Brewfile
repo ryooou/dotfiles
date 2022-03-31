@@ -5,7 +5,6 @@ brew "apr-util"
 brew "readline", link: true
 brew "python@3.9"
 brew "glib"
-brew "ffmpeg"
 brew "ghq"
 brew "git"
 brew "git-secrets"
