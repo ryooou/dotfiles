@@ -10,18 +10,22 @@ DOTFILES := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 # Targets
 all:
 
-list: ## Show dot files in this repo
+list: ## Show dotfiles.
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
 
-install: ## Create symlinks to home directory
+init: ## Setup this dotfile.
+	@bash $(DOTPATH)/etc/scripts/init.sh
+	@make fresh
+
+fresh: ## Fresh symlinks and Homebrew.
 	@bash $(DOTPATH)/etc/scripts/symlink.sh $(DOTPATH)/zsh/.zprezto $(HOME)/.zprezto $(BACKUP_DIR)
 	@$(foreach val, $(DOTFILES), bash $(DOTPATH)/etc/scripts/symlink.sh $(abspath $(val)) $(HOME)/$(val) $(BACKUP_DIR);)
 	@brew bundle --global
 
-help: ## Self-documented Makefile
+update-submodules: ## Update submodules.
+	@git submodule update --init --recursive
+
+help: ## Show help for this dotfiles.
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 		| sort \
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
-
-update-submodules: ## Update submodules
-	@git submodule update --init --recursive
