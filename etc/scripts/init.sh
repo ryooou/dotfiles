@@ -10,7 +10,6 @@ if test ! $(which brew); then
 
   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
   eval "$(/opt/homebrew/bin/brew shellenv)"
-  brew update-reset
 fi
 
 if test ! $(which zsh); then
