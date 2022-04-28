@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 create_symlink() {
   local from=${1:?}
