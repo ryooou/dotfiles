@@ -62,3 +62,19 @@ if (( $+commands[peco] )) && (( $+commands[ghq] )); then
   zle -N peco_src
   bindkey '^]' peco_src
 fi
+
+# peco dir
+
+if (( $+commands[peco] )); then
+  function peco_dir () {
+    selected_dir=$(find . -type d | grep -v .git | grep -v node_modules | grep -v bower_components | grep -v vendor | peco)
+
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle redisplay
+  }
+  zle -N peco_dir
+  bindkey '^X' peco_dir
+fi
