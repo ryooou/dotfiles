@@ -1,0 +1,18 @@
+name: My Dotfiles CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - name: Pull a dotfiles repository.
+        uses: actions/checkout@v2
+      - name: test
+        run: which go
+      - name: Setup dotfiles on Mac OS.
+        run: make init NAME="ryooou" EMAIL="test@example.com"
+      - name: Fresh dotfiles.
+        run: make fresh

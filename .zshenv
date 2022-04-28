@@ -24,12 +24,16 @@ export PATH="$GOBIN:$PATH"
 export GO111MODULE=auto
 
 # Node
-export PATH=$HOME/.nodebrew/current/bin:$PATH
+if (( $+commands[brew] )); then
+  source $(brew --prefix nvm)/nvm.sh
+fi
 
 # Python
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if (( $+commands[pyenv] )); then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
 
 # History file and its size
 export HISTFILE=${HOME}/.zsh_history
