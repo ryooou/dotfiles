@@ -67,8 +67,7 @@ fi
 
 if (( $+commands[peco] )); then
   function peco_dir () {
-    selected_dir=$(find . -type d | grep -v .git | grep -v node_modules | grep -v bower_components | grep -v vendor | peco)
-
+    local selected_dir=$(find . -type d | grep -v .git | grep -v node_modules | grep -v bower_components | grep -v vendor | peco)
     if [ -n "$selected_dir" ]; then
         BUFFER="cd ${selected_dir}"
         zle accept-line
