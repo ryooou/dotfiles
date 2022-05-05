@@ -16,3 +16,5 @@ if test ! $(which zsh); then
   echo "Zsh is not installed! Please install zsh first!"
   exit 1
 fi
+
+mkdir -p ~/.nvm

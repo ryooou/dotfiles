@@ -24,7 +24,7 @@ export PATH="$GOBIN:$PATH"
 export GO111MODULE=auto
 
 # Node
-export PATH=$HOME/.nodebrew/current/bin:$PATH
+source $(brew --prefix nvm)/nvm.sh
 
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
