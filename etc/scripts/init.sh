@@ -32,7 +32,10 @@ if ! fgrep -q "${BREW_PREFIX}/bin/zsh" /etc/shells; then
 fi;
 
 if test $(which go) && [ "$(which go)" = "${BREW_PREFIX}/bin/go" ]; then
-  brew link --overwrite --dry-run go
+  brew list
+  brew unlink go@1.17
+  brew install go
+  brew link --overwrite go
 fi;
 
 if [ ! -f ~/.zshrc.local ] ;then
