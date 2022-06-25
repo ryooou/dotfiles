@@ -10,6 +10,9 @@ DOTFILES := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 # Targets
 all:
 
+test:
+	@sh $(DOTPATH)/etc/scripts/test.sh
+
 list: ## Show dotfiles.
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
 

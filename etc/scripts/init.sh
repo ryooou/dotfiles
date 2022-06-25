@@ -31,6 +31,12 @@ if ! fgrep -q "${BREW_PREFIX}/bin/zsh" /etc/shells; then
   chsh -s "${BREW_PREFIX}/bin/zsh";
 fi;
 
+INSTALLED_GO=$(brew list | grep "go@[0-9\.]*")
+
+if [ -n "$INSTALLED_GO" ] ;then
+  brew uninstall $INSTALLED_GO
+fi
+
 if [ ! -f ~/.zshrc.local ] ;then
   touch ~/.zshrc.local
 fi
