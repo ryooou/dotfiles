@@ -25,6 +25,8 @@ fi
 
 BREW_PREFIX=$(brew --prefix)
 
+sudo chown -R $(whoami):admin $BREW_PREFIX/bin
+
 if ! fgrep -q "${BREW_PREFIX}/bin/zsh" /etc/shells; then
   brew install zsh
   echo "${BREW_PREFIX}/bin/zsh" | sudo tee -a /etc/shells;
