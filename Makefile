@@ -2,7 +2,7 @@
 DOTPATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 BACKUP_DIR := $(DOTPATH)/var/backups/$(shell date +'%Y-%m-%d/%H%M%S')
 CANDIDATES := $(wildcard .??*) bin
-EXCLUSIONS := .DS_Store .git .gitmodules .gitignore .travis.yml
+EXCLUSIONS := .DS_Store .git .gitmodules .gitignore .travis.yml .zshrc.local
 DOTFILES := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
 .DEFAULT_GOAL := help
@@ -14,16 +14,14 @@ list: ## Show dotfiles.
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
 
 init: ## Setup this dotfile.
-	@bash $(DOTPATH)/etc/scripts/init.sh
+	@sh $(DOTPATH)/etc/scripts/init.sh
 	@make fresh
+	@sh $(DOTPATH)/etc/scripts/git_setup.sh $(NAME) $(EMAIL)
 
 fresh: ## Fresh symlinks and Homebrew.
-	@bash $(DOTPATH)/etc/scripts/symlink.sh $(DOTPATH)/zsh/.zprezto $(HOME)/.zprezto $(BACKUP_DIR)
+	@sh $(DOTPATH)/etc/scripts/symlink.sh $(DOTPATH)/zsh/.zprezto $(HOME)/.zprezto $(BACKUP_DIR)
 	@$(foreach val, $(DOTFILES), bash $(DOTPATH)/etc/scripts/symlink.sh $(abspath $(val)) $(HOME)/$(val) $(BACKUP_DIR);)
 	@brew bundle --global
-
-update-submodules: ## Update submodules.
-	@git submodule update --init --recursive
 
 help: ## Show help for this dotfiles.
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \

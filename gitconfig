@@ -1,0 +1,22 @@
+[alias]
+	s = status
+	r = reset
+	c = commit -m
+	md = merge develop
+[color]
+	editor = vim
+	ui = true
+[core]
+	excludesfile = ~/.gitignore_global
+[ghq]
+	root = ~/go
+	# root = ~/projects
+	root = ~/ghq
+[include]
+	path = ~/.gitconfig.local
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
+[url "git@github.com:"]
+	insteadOf = https://github.com/

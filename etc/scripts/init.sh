@@ -5,6 +5,17 @@ if [ ! "$(uname)" = 'Darwin' ]; then
   exit 1
 fi
 
+if test ! $(which zsh); then
+  echo "Zsh is not installed! Please install zsh first!"
+  exit 1
+else
+  chsh -s $(which zsh)
+fi
+
+if test ! $(which xcode-select); then
+  xcode-select --install > /dev/null
+fi
+
 if test ! $(which brew); then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -12,9 +23,22 @@ if test ! $(which brew); then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-if test ! $(which zsh); then
-  echo "Zsh is not installed! Please install zsh first!"
-  exit 1
+BREW_PREFIX=$(brew --prefix)
+
+if ! fgrep -q "${BREW_PREFIX}/bin/zsh" /etc/shells; then
+  brew install zsh
+  echo "${BREW_PREFIX}/bin/zsh" | sudo tee -a /etc/shells;
+  chsh -s "${BREW_PREFIX}/bin/zsh";
+fi;
+
+if [ ! -f ~/.zshrc.local ] ;then
+  touch ~/.zshrc.local
 fi
 
-mkdir -p ~/.nvm
+if [ ! -d ~/.nvm ] ;then
+  mkdir -p ~/.nvm
+fi
+
+if [ -n "$DOTPATH" ] && [ ! -f ${DOTPATH}/.gitconfig ] ;then
+  cp ${DOTPATH}/gitconfig ${DOTPATH}/.gitconfig
+fi
