@@ -32,7 +32,7 @@ if ! fgrep -q "${BREW_PREFIX}/bin/zsh" /etc/shells; then
 fi;
 
 if test $(which go) && [ "$(which go)" = "${BREW_PREFIX}/bin/go" ]; then
-  brew unlink go
+  brew unlink go@1.17
 fi;
 
 if [ ! -f ~/.zshrc.local ] ;then
