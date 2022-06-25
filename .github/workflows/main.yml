@@ -10,13 +10,7 @@ jobs:
     steps:
       - name: Pull a dotfiles repository.
         uses: actions/checkout@v2
-      - name: Test
-        run: |
-          pwd
-          ls
-          which make
-          make --version
       - name: Setup dotfiles on Mac OS.
-        run: make init -NAME="ryooou" -EMAIL="test@example.com"
+        run: make init NAME="ryooou" EMAIL="test@example.com"
       - name: Fresh dotfiles.
         run: make fresh
