@@ -19,7 +19,7 @@ fi
 if test ! $(which brew); then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ${HOME}/.zprofile
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -37,14 +37,18 @@ if [ -n "$INSTALLED_GO" ] ;then
   brew uninstall $INSTALLED_GO
 fi
 
-if [ ! -f ~/.zshrc.local ] ;then
-  touch ~/.zshrc.local
+if [ ! -f ${DOTPATH}/.zshrc.local ] ;then
+  touch ${DOTPATH}/.zshrc.local
 fi
 
-if [ ! -d ~/.nvm ] ;then
-  mkdir -p ~/.nvm
+if [ ! -f ${DOTPATH}/.gitconfig.local ] ;then
+  touch ${DOTPATH}/.gitconfig.local
 fi
 
 if [ -n "$DOTPATH" ] && [ ! -f ${DOTPATH}/.gitconfig ] ;then
   cp ${DOTPATH}/gitconfig ${DOTPATH}/.gitconfig
+fi
+
+if [ ! -d ~/.nvm ] ;then
+  mkdir -p ~/.nvm
 fi

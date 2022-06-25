@@ -5,10 +5,6 @@ if test ! $(which git); then
   exit 1
 fi
 
-if [ ! -f ~/.gitconfig.local ] ;then
-  touch ~/.gitconfig.local
-fi
-
 input_name=${1}
 input_email=${2}
 

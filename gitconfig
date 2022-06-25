@@ -10,7 +10,6 @@
 	excludesfile = ~/.gitignore_global
 [ghq]
 	root = ~/go
-	# root = ~/projects
 	root = ~/ghq
 [include]
 	path = ~/.gitconfig.local
