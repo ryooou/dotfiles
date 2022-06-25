@@ -38,4 +38,4 @@ brew "zsh"
 # cask "skitch"
 # cask "visual-studio-code"
 
-mas 'BetterSnapTool', id: 417375580
+# mas 'BetterSnapTool', id: 417375580
