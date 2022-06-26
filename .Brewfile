@@ -10,6 +10,7 @@ brew "git"
 brew "git-secrets"
 brew "go"
 brew "grep"
+brew "jmeter"
 brew "jq"
 brew "libsass"
 brew "nvm"
@@ -20,6 +21,7 @@ brew "phplint"
 brew "pyenv"
 brew "telnet"
 brew "tfenv"
+brew "tflint"
 brew "tree"
 brew "wget"
 brew "zsh"
@@ -29,7 +31,6 @@ brew "zsh"
 # cask "docker"
 # cask "google-chrome"
 # cask "iterm2"
-# cask "jmeter"
 # cask "notion"
 # cask "owasp-zap"
 # cask "postman"
@@ -38,4 +39,9 @@ brew "zsh"
 # cask "skitch"
 # cask "visual-studio-code"
 
-# mas 'BetterSnapTool', id: 417375580
+# mas "BetterSnapTool", id: 417375580
+# mas "iMovie", id: 408981434
+# mas "Keynote", id: 409183694
+# mas "Numbers", id: 409203825
+# mas "Pages", id: 409201541
+# mas "Xcode", id: 497799835

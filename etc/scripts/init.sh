@@ -41,14 +41,14 @@ if [ ! -f ${DOTPATH}/.zshrc.local ] ;then
   touch ${DOTPATH}/.zshrc.local
 fi
 
-if [ ! -f ${DOTPATH}/.gitconfig.local ] ;then
-  touch ${DOTPATH}/.gitconfig.local
-fi
-
 if [ -n "$DOTPATH" ] && [ ! -f ${DOTPATH}/.gitconfig ] ;then
   cp ${DOTPATH}/gitconfig ${DOTPATH}/.gitconfig
 fi
 
 if [ ! -d ~/.nvm ] ;then
   mkdir -p ~/.nvm
+fi
+
+if [ ! -d ~/.terraform.d/plugin-cache ] ;then
+  mkdir -p ~/.terraform.d/plugin-cache
 fi
