@@ -2,7 +2,7 @@
 DOTPATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 BACKUP_DIR := $(DOTPATH)/var/backups/$(shell date +'%Y-%m-%d/%H%M%S')
 CANDIDATES := $(wildcard .??*) bin
-EXCLUSIONS := .DS_Store .git .gitmodules .gitignore .travis.yml
+EXCLUSIONS := .DS_Store .git .gitmodules .gitignore .travis.yml .github
 DOTFILES := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
 .DEFAULT_GOAL := help

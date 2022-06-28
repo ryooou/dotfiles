@@ -39,10 +39,12 @@ fi
 
 if [ ! -f ${DOTPATH}/.zshrc.local ] ;then
   touch ${DOTPATH}/.zshrc.local
+  echo "The .zshrc.local file has been created."
 fi
 
 if [ -n "$DOTPATH" ] && [ ! -f ${DOTPATH}/.gitconfig ] ;then
   cp ${DOTPATH}/gitconfig ${DOTPATH}/.gitconfig
+  echo "The .gitconfig file has been created."
 fi
 
 if [ ! -d ~/.nvm ] ;then
