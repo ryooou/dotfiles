@@ -11,6 +11,6 @@ jobs:
       - name: Pull a dotfiles repository.
         uses: actions/checkout@v2
       - name: Setup dotfiles on Mac OS.
-        run: sudo make init NAME="ryooou" EMAIL="test@example.com" && echo $DOTPATH
+        run: make init NAME="ryooou" EMAIL="test@example.com" && echo $DOTPATH
       - name: Fresh dotfiles.
-        run: sudo make fresh
+        run: make fresh
