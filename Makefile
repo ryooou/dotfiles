@@ -14,7 +14,7 @@ list: ## Show dotfiles.
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
 
 init: ## Setup this dotfile.
-	@echo $(MAKEFILE_LIST) && echo $(dir $(MAKEFILE_LIST)) && echo $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+	@echo $(MAKEFILE_LIST) && echo $(dir $(MAKEFILE_LIST)) && echo $(realpath $(dir $(lastword $(MAKEFILE_LIST)))) && echo $(DOTPATH)
 	@sh $(DOTPATH)/etc/scripts/init.sh
 	@make fresh
 	@sh $(DOTPATH)/etc/scripts/git_setup.sh $(NAME) $(EMAIL)
