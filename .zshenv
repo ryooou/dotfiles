@@ -24,7 +24,7 @@ export PATH="$GOBIN:$PATH"
 export GO111MODULE=auto
 
 # Node
-if (( $+commands[brew] )); then
+if (( $+commands[brew] )) && [ -e $(brew --prefix nvm)/nvm.sh ]; then
   source $(brew --prefix nvm)/nvm.sh
 fi
 
