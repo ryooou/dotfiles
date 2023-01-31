@@ -26,5 +26,6 @@ Temporary Items
 .apdisk
 
 # Others
+.Brewfile
 .gitconfig
 .zshrc.local

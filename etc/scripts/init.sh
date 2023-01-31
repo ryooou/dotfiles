@@ -47,6 +47,11 @@ if [ -n "$DOTPATH" ] && [ ! -f ${DOTPATH}/.gitconfig ] ;then
   echo "The ${DOTPATH}/.gitconfig file has been created."
 fi
 
+if [ -n "$DOTPATH" ] && [ ! -f ${DOTPATH}/.Brewfile ] ;then
+  cp ${DOTPATH}/Brewfile ${DOTPATH}/.Brewfile
+  echo "The ${DOTPATH}/.Brewfile file has been created."
+fi
+
 if [ ! -d ~/.nvm ] ;then
   mkdir -p ~/.nvm
 fi
